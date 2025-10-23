@@ -1,0 +1,225 @@
+/* Importación de la fuente GreatVictorian-Standard */
+@font-face {
+    font-family: 'Great Victorian Standard'; /* Nombre que usarás para referenciar la fuente en CSS */
+    src: url('imagenes/Tipos_fuentes/greatvictorian/GreatVictorian-Standard.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; /* Ayuda a controlar cómo se muestra el texto mientras la fuente se carga */
+}
+
+/* Importación de la fuente GreatVictorian-Swashed (si quieres usarla) */
+@font-face {
+    font-family: 'Great Victorian Swashed';
+    src: url('imagenes/Tipos_fuentes/greatvictorian/GreatVictorian-Swashed.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Importación de la fuente WallingtonRegular-PYK7 */
+@font-face {
+    font-family: 'Wallington Regular'; /* Nombre que usarás para referenciar la fuente en CSS */
+    src: url('imagenes/Tipos_fuentes/wallington-font/WallingtonRegular-PYK7.ttf') format('truetype');
+    font-weight: normal; /* Si solo hay una variante, suele ser normal */
+    font-style: normal;
+    font-display: swap;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: rgb(17, 24, 39);
+}
+
+:root {
+    /* Colores para la nueva página */
+    --color-amber-400: #fbbf24;
+    --color-gray-300: #d1d5db;
+    --color-dark-bg: #111827; /* Coincide con tu body background-color */
+    --color-text-primary: #ffffff; /* Generalmente el color principal del texto */
+
+    /* --- Variables AÑADIDAS para la sección de Platillos Principales --- */
+    --color-amber-300: #fcd34d; /* text-amber-300 */
+    --color-amber-200: #fde68a; /* text-amber-200 */
+    --color-gray-800: #1f2937; /* bg-gray-800, si lo necesitas sin opacidad */
+    --color-gray-800-opacity: rgba(31, 41, 55, 0.5); /* bg-gray-800/50 */
+    --shadow-amber-light: rgba(251, 191, 36, 0.1); /* hover:shadow-amber-400/10 */
+
+    /* Fuentes si necesitas importar (Ejemplo, si usas una fuente serif específica) */
+    --font-family-greatvictorian-standard: 'Great Victorian Standard', serif;
+    --font-family-greatvictorian-swashed: 'Great Victorian Swashed', cursive; /* cursive es una buena alternativa genérica */
+    --font-family-greatvictorian-swashed-sc: 'Great Victorian Swashed Small Caps', serif;
+    --font-family-wallington: 'Wallington Regular', cursive;
+}
+
+header {
+    background-color: var(--color-dark-bg); /* O el color de fondo que desees para el header */
+    padding: 3rem 1.5rem 4rem; /* Ajuste de padding si es necesario, py-24 era excesivo para un header */
+}
+
+.site-header-content {
+    text-align: center; /* text-center */
+}
+
+.site-title {
+    font-size: 2.5rem; /* text-5xl (40px) */
+    font-weight: 800; /* font-extrabold */
+    color: var(--color-amber-400); /* text-amber-400 */
+    font-family: var(--font-family-greatvictorian-swashed); 
+    letter-spacing: 0.05em; /* tracking-wider - Ajusta el valor para el espaciado entre letras */
+    margin-bottom: 0; /* Para controlar el margen con el subtítulo */
+}
+
+.site-tagline {
+    margin-top: 1rem; /* mt-4 (16px) */
+    font-size: 28px; /* text-lg (18px) */
+    color: var(--color-gray-300); /* text-gray-300 */
+    font-style: italic; /* italic */
+    font-family: var(--font-family-wallington);
+}
+
+.header-separator-svg {
+    width: 50%; /* w-1/2 */
+    max-width: 20rem; /* Para que no crezca demasiado en pantallas muy grandes */
+    height: auto;
+    margin-top: 1.5rem; /* mt-6 (24px) */
+    margin-left: auto; /* mx-auto */
+    margin-right: auto; /* mx-auto */
+    color: var(--color-amber-400); /* text-amber-400 - para SVG que usan currentColor */
+    stroke: currentColor; /* Asegura que las líneas del SVG usen este color */
+    stroke-width: 1.5; /* stroke-width */
+}
+
+.header-separator-svg path:last-child {
+    stroke-width: 2; /* stroke-width-2 para el zigzag central */
+}
+
+/* Media Query para responsividad (md: - 768px por defecto en Tailwind) */
+@media (min-width: 768px) {
+    .site-title {
+        font-size: 3.75rem; /* md:text-6xl (60px) */
+    }
+
+    .header-separator-svg {
+        width: 33.333333%; /* md:w-1/3 */
+    }
+}
+
+
+.menu-section {
+    padding: 4rem 1.5rem; /* Ajuste de padding general, mb-16 es margin-bottom */
+    margin-bottom: 4rem; /* mb-16 (64px) */
+    background-color: var(--color-dark-bg); /* Fondo oscuro, si es diferente al body */
+    text-align: center;
+}
+
+.menu-section .section-title {
+    font-size: 2.7 5rem; /* text-4xl (36px) */
+    font-weight: bold; /* font-bold */
+    color: var(--color-amber-300); /* text-amber-300 */
+    margin-bottom: 1rem; /* mb-4 (16px) */
+    text-align: center; /* text-center */
+    font-family: var(--font-family-serif, serif); /* font-serif */
+}
+
+/* Imagen de borde separador para cada seccion */
+.section-separator-img {
+    display: block;
+    width: 75%;
+    max-width: 20rem;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.dishes-grid {
+    display: grid; /* grid */
+    grid-template-columns: 1fr; /* grid-cols-1 para móviles */
+    gap: 2rem; /* gap-8 (32px) */
+    max-width: 1200px; /* Ancho máximo para el grid */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dish-card {
+    display: flex; /* flex */
+    align-items: center; /* items-center */
+    background-color: var(--color-gray-800-opacity); /* bg-gray-800/50 */
+    border-radius: 0.5rem; /* rounded-lg (8px) */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    overflow: hidden; /* overflow-hidden */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* transition-transform duration-300 */
+}
+
+.dish-card:hover {
+    transform: scale(1.05); /* hover:scale-105 */
+    box-shadow: 0 10px 15px -3px var(--shadow-amber-light), 0 4px 6px -2px var(--shadow-amber-light); /* hover:shadow-amber-400/10 */
+}
+
+.dish-image {
+    width: 8rem; /* w-32 (128px) */
+    height: 8rem; /* h-32 (128px) */
+    object-fit: cover; /* object-cover */
+    flex-shrink: 0; /* flex-shrink-0 */
+}
+
+.dish-details {
+    padding: 1rem 1.5rem; /* p-4 md:p-6 (16px-24px) */
+    flex: 1; /* flex-grow para ocupar el espacio restante */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* justify-between */
+    align-self: stretch; /* self-stretch */
+}
+
+.dish-name {
+    font-size: 1.25rem; /* text-xl (20px) */
+    font-weight: 600; /* font-semibold */
+    color: var(--color-amber-400); /* text-amber-400 */
+    font-family: var(--font-family-serif, serif); /* font-serif */
+}
+
+.dish-description {
+    margin-top: 0.5rem; /* mt-2 (8px) */
+    font-size: 0.875rem; /* text-sm (14px) */
+    color: var(--color-gray-300); /* text-gray-300 */
+}
+
+.dish-price {
+    margin-top: 1rem; /* mt-4 (16px) */
+    font-size: 1.125rem; /* text-lg (18px) */
+    color: var(--color-amber-200); /* text-amber-200 */
+    font-weight: bold; /* font-bold */
+    align-self: flex-end; /* self-end */
+    white-space: nowrap; /* Evita que el precio se rompa en línea */
+}
+
+
+/* Media Queries para responsividad */
+@media (min-width: 768px) {
+    .dish-image {
+        width: 10rem; /* md:w-40 (160px) */
+        height: 10rem; /* md:h-40 (160px) */
+    }
+
+    .dish-details {
+        padding: 1.5rem; /* md:p-6 (24px) */
+    }
+
+    .dish-name {
+        font-size: 1.5rem; /* md:text-2xl (24px) */
+    }
+}
+
+@media (min-width: 1024px) {
+    .dishes-grid {
+        grid-template-columns: 1fr 1fr; /* lg:grid-cols-2 */
+    }
+}
