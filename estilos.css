@@ -59,8 +59,12 @@ body{
 
 header {
     background-color: var(--color-dark-bg); /* O el color de fondo que desees para el header */
-    padding: 3rem 1.5rem 4rem; /* Ajuste de padding si es necesario, py-24 era excesivo para un header */
+    text-align: center;
+    position: relative;
 }
+
+/* SECCION DEL ELEMENTO (<header>)
+================================================ */
 
 .site-header-content {
     text-align: center; /* text-center */
@@ -72,7 +76,6 @@ header {
     color: var(--color-amber-400); /* text-amber-400 */
     font-family: var(--font-family-greatvictorian-swashed); 
     letter-spacing: 0.05em; /* tracking-wider - Ajusta el valor para el espaciado entre letras */
-    margin-bottom: 0; /* Para controlar el margen con el subtítulo */
 }
 
 .site-tagline {
@@ -81,6 +84,21 @@ header {
     color: var(--color-gray-300); /* text-gray-300 */
     font-style: italic; /* italic */
     font-family: var(--font-family-wallington);
+}
+
+.section-decorator-img{
+    width: 138%;
+    max-width: 110rem;
+    height: auto; /* Mantiene la proporción */
+    display: block; /* Para que margin: auto funcione */
+
+    position: absolute; /* ¡IMPORTANTE! La saca del flujo y permite moverla libremente */
+    top: 40%; /* Intenta centrarla verticalmente */
+    left: 50%; /* Intenta centrarla horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta el centrado exacto */
+    
+    z-index: 10; /* ¡IMPORTANTE! La pone por encima del texto. Un valor alto la pondrá encima de casi todo */
+    opacity: 1; /* Si quieres que sea un poco transparente */
 }
 
 .header-separator-svg {
@@ -99,20 +117,11 @@ header {
     stroke-width: 2; /* stroke-width-2 para el zigzag central */
 }
 
-/* Media Query para responsividad (md: - 768px por defecto en Tailwind) */
-@media (min-width: 768px) {
-    .site-title {
-        font-size: 3.75rem; /* md:text-6xl (60px) */
-    }
-
-    .header-separator-svg {
-        width: 33.333333%; /* md:w-1/3 */
-    }
-}
-
+/* SECCION DEL ELEMENTO (<main>)
+================================================ */
 
 .menu-section {
-    padding: 4rem 1.5rem; /* Ajuste de padding general, mb-16 es margin-bottom */
+    padding: 1rem 1.5rem; /* Ajuste de padding general, mb-16 es margin-bottom */
     margin-bottom: 4rem; /* mb-16 (64px) */
     background-color: var(--color-dark-bg); /* Fondo oscuro, si es diferente al body */
     text-align: center;
@@ -202,24 +211,51 @@ header {
 }
 
 
-/* Media Queries para responsividad */
-@media (min-width: 768px) {
-    .dish-image {
-        width: 10rem; /* md:w-40 (160px) */
-        height: 10rem; /* md:h-40 (160px) */
+@media (max-width: 416px) {
+    header {
+        text-align: center;   
+        position: relative;
+        padding: 10px;
+    }
+    .site-header-content {
+        text-align: center; /* text-center */
+        position: relative;
+        width: 100%;
+        height: 100%;
+        
     }
 
-    .dish-details {
-        padding: 1.5rem; /* md:p-6 (24px) */
+
+    .site-title {
+        font-size: 7vw;
+        font-weight: 800;
+        color: var(--color-amber-400);
+        font-family: var(--font-family-greatvictorian-swashed);
+        letter-spacing: 0.05em;
+        margin-top: 20px;
+        padding: 2px 10%;
+        
     }
 
-    .dish-name {
-        font-size: 1.5rem; /* md:text-2xl (24px) */
+    .site-tagline {
+        margin-top: 8px;
+        font-size: 4vw;
+        color: var(--color-gray-300);
+        font-style: italic;
+        font-family: var(--font-family-wallington);
+        padding: 2px 10%;
     }
-}
 
-@media (min-width: 1024px) {
-    .dishes-grid {
-        grid-template-columns: 1fr 1fr; /* lg:grid-cols-2 */
+    .section-decorator-img {
+        width: 100%; /* Ajusta el ancho de la imagen */
+        height: auto;
+        display: block;
+        z-index: 10;
+        opacity: 1;
+        position: absolute;
+        top: 32px;
+    }
+    .header-separator-svg {
+        margin-top: 25px;
     }
 }
