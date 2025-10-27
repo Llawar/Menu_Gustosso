@@ -58,9 +58,14 @@ body{
 }
 
 header {
-    background-color: var(--color-dark-bg); /* O el color de fondo que desees para el header */
+    background-color: var(--color-dark-bg);
     text-align: center;
     position: relative;
+    width: 100%;  /* Asegura que el header ocupe todo el ancho */
+    display: flex;  /* Habilita flexbox */
+    justify-content: center;  /* Centra horizontalmente */
+    align-items: center;  /* Centra verticalmente */
+    min-height: 40vh;  /* Opcional: ajusta la altura según necesites */
 }
 
 /* SECCION DEL ELEMENTO (<header>)
@@ -68,6 +73,9 @@ header {
 
 .site-header-content {
     text-align: center; /* text-center */
+    height: 400px;
+    width: 1250px;
+    position: relative;
 }
 
 .site-title {
@@ -86,19 +94,17 @@ header {
     font-family: var(--font-family-wallington);
 }
 
-.section-decorator-img{
-    width: 138%;
-    max-width: 110rem;
-    height: auto; /* Mantiene la proporción */
-    display: block; /* Para que margin: auto funcione */
-
-    position: absolute; /* ¡IMPORTANTE! La saca del flujo y permite moverla libremente */
-    top: 40%; /* Intenta centrarla verticalmente */
-    left: 50%; /* Intenta centrarla horizontalmente */
-    transform: translate(-50%, -50%); /* Ajusta el centrado exacto */
-    
-    z-index: 10; /* ¡IMPORTANTE! La pone por encima del texto. Un valor alto la pondrá encima de casi todo */
-    opacity: 1; /* Si quieres que sea un poco transparente */
+.section-decorator-img {
+    width: 100%;  /* Cambiado de 138% a 100% */
+    max-width: 100%;  /* Ajustado para que no exceda el ancho del contenedor */
+    height: auto;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    opacity: 1;
 }
 
 .header-separator-svg {
@@ -159,12 +165,14 @@ header {
 
 .dish-card {
     display: flex; /* flex */
+    flex-direction: column;
     align-items: center; /* items-center */
     background-color: var(--color-gray-800-opacity); /* bg-gray-800/50 */
     border-radius: 0.5rem; /* rounded-lg (8px) */
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
     overflow: hidden; /* overflow-hidden */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* transition-transform duration-300 */
+    padding: 10px;
 }
 
 .dish-card:hover {
@@ -253,7 +261,7 @@ header {
         z-index: 10;
         opacity: 1;
         position: absolute;
-        top: 32px;
+        top: 51px;
     }
     .header-separator-svg {
         margin-top: 25px;
