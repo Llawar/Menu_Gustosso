@@ -85,10 +85,11 @@ header {
     color: var(--color-amber-400); /* text-amber-400 */
     font-family: var(--font-family-greatvictorian-swashed); 
     letter-spacing: 0.05em; /* tracking-wider - Ajusta el valor para el espaciado entre letras */
+    padding-top: 10%;
 }
 
 .site-tagline {
-    margin-top: 1rem; /* mt-4 (16px) */
+    margin-top: 5%; /* mt-4 (16px) */
     font-size: 28px; /* text-lg (18px) */
     color: var(--color-gray-300); /* text-gray-300 */
     font-style: italic; /* italic */
