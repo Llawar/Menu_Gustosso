@@ -57,29 +57,20 @@ body{
     --font-family-wallington: 'Wallington Regular', cursive;
 }
 
+header {
+    background-color: var(--color-dark-bg); /* O el color de fondo que desees para el header */
+    text-align: center;
+    position: relative;
+}
+
 /* SECCION DEL ELEMENTO (<header>)
 ================================================ */
 
-header {
-    background-color: var(--color-dark-bg);
-    text-align: center;
-    position: relative;
-    width: 100%;  /* Asegura que el header ocupe todo el ancho */
-    display: flex;  /* Habilita flexbox */
-    justify-content: center;  /* Centra horizontalmente */
-    align-items: center;  /* Centra verticalmente */
-    min-height: 40vh;  /* Opcional: ajusta la altura según necesites */
-}
-
 .site-header-content {
     text-align: center; /* text-center */
-    height: 400px;
-    width: 1250px;
-    position: relative;
 }
 
 .site-title {
-    text-align: center;
     font-size: 2.5rem; /* text-5xl (40px) */
     font-weight: 800; /* font-extrabold */
     color: var(--color-amber-400); /* text-amber-400 */
@@ -95,17 +86,19 @@ header {
     font-family: var(--font-family-wallington);
 }
 
-.section-decorator-img {
-    width: 100%;  /* Cambiado de 138% a 100% */
-    max-width: 100%;  /* Ajustado para que no exceda el ancho del contenedor */
-    height: auto;
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    opacity: 1;
+.section-decorator-img{
+    width: 138%;
+    max-width: 110rem;
+    height: auto; /* Mantiene la proporción */
+    display: block; /* Para que margin: auto funcione */
+
+    position: absolute; /* ¡IMPORTANTE! La saca del flujo y permite moverla libremente */
+    top: 40%; /* Intenta centrarla verticalmente */
+    left: 50%; /* Intenta centrarla horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta el centrado exacto */
+    
+    z-index: 10; /* ¡IMPORTANTE! La pone por encima del texto. Un valor alto la pondrá encima de casi todo */
+    opacity: 1; /* Si quieres que sea un poco transparente */
 }
 
 .header-separator-svg {
@@ -128,7 +121,7 @@ header {
 ================================================ */
 
 .menu-section {
-    padding: 1rem 1.5rem; /* Ajuste de padding general, mb-16 es margin-bottom */
+    padding: 4rem 1.5rem; /* Ajuste de padding general, mb-16 es margin-bottom */
     margin-bottom: 4rem; /* mb-16 (64px) */
     background-color: var(--color-dark-bg); /* Fondo oscuro, si es diferente al body */
     text-align: center;
@@ -166,14 +159,12 @@ header {
 
 .dish-card {
     display: flex; /* flex */
-    flex-direction: column;
     align-items: center; /* items-center */
     background-color: var(--color-gray-800-opacity); /* bg-gray-800/50 */
     border-radius: 0.5rem; /* rounded-lg (8px) */
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
     overflow: hidden; /* overflow-hidden */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* transition-transform duration-300 */
-    padding: 10px;
 }
 
 .dish-card:hover {
@@ -257,12 +248,12 @@ header {
 
     .section-decorator-img {
         width: 100%; /* Ajusta el ancho de la imagen */
-        height: 90%;
+        height: auto;
         display: block;
         z-index: 10;
         opacity: 1;
         position: absolute;
-        top: 51px;
+        top: 32px;
     }
     .header-separator-svg {
         margin-top: 25px;
