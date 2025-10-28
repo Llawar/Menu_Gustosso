@@ -34,6 +34,7 @@
 
 body{
     background-color: rgb(17, 24, 39);
+    overflow-x: hidden; /* evita scroll horizontal por elementos absolutos */
 }
 
 :root {
@@ -64,23 +65,26 @@ header {
     background-color: var(--color-dark-bg);
     text-align: center;
     position: relative;
-    width: 100%;  /* Asegura que el header ocupe todo el ancho */
-    display: flex;  /* Habilita flexbox */
-    justify-content: center;  /* Centra horizontalmente */
-    align-items: center;  /* Centra verticalmente */
-    min-height: 40vh;  /* Opcional: ajusta la altura según necesites */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40vh;
+    overflow: hidden; /* recorta imágenes decorativas en móviles */
 }
 
 .site-header-content {
-    text-align: center; /* text-center */
-    height: 400px;
-    width: 1250px;
+    text-align: center;
     position: relative;
+    width: 100%;
+    max-width: 1250px; /* no exceder en desktop */
+    height: auto; /* permite que el contenido defina la altura */
+    padding: 0 1rem; /* margen interno para pantallas pequeñas */
 }
 
 .site-title {
     text-align: center;
-    font-size: 2.5rem; /* text-5xl (40px) */
+    font-size: clamp(1.75rem, 4vw + 0.5rem, 3rem);
     font-weight: 800; /* font-extrabold */
     color: var(--color-amber-400); /* text-amber-400 */
     font-family: var(--font-family-greatvictorian-swashed); 
@@ -90,16 +94,18 @@ header {
 
 .site-tagline {
     margin-top: 5%; /* mt-4 (16px) */
-    font-size: 28px; /* text-lg (18px) */
+    font-size: clamp(1rem, 2.2vw + 0.5rem, 1.5rem);
     color: var(--color-gray-300); /* text-gray-300 */
     font-style: italic; /* italic */
     font-family: var(--font-family-wallington);
 }
 
 .section-decorator-img {
-    width: 100%;  /* Cambiado de 138% a 100% */
-    max-width: 100%;  /* Ajustado para que no exceda el ancho del contenedor */
+    width: 100%;
+    max-width: 100%;
     height: auto;
+    max-height: 100%; /* no sobrepasa la altura del header */
+    object-fit: contain; /* mantiene proporción dentro del header */
     display: block;
     position: absolute;
     top: 50%;
@@ -107,6 +113,7 @@ header {
     transform: translate(-50%, -50%);
     z-index: 10;
     opacity: 1;
+    pointer-events: none; /* no bloquea clics en el header */
 }
 
 .header-separator-svg {
@@ -136,7 +143,7 @@ header {
 }
 
 .menu-section .section-title {
-    font-size: 2.7 5rem; /* text-4xl (36px) */
+    font-size: clamp(1.5rem, 2.5vw + 0.5rem, 2.75rem);
     font-weight: bold; /* font-bold */
     color: var(--color-amber-300); /* text-amber-300 */
     margin-bottom: 1rem; /* mb-4 (16px) */
@@ -158,7 +165,7 @@ header {
 
 .dishes-grid {
     display: grid; /* grid */
-    grid-template-columns: 1fr; /* grid-cols-1 para móviles */
+    grid-template-columns: repeat(1, minmax(0, 1fr)); /* grid-cols-1 para móviles */
     gap: 2rem; /* gap-8 (32px) */
     max-width: 1200px; /* Ancho máximo para el grid */
     margin-left: auto;
@@ -183,8 +190,8 @@ header {
 }
 
 .dish-image {
-    width: 8rem; /* w-32 (128px) */
-    height: 8rem; /* h-32 (128px) */
+    width: clamp(6rem, 12vw, 10rem);
+    height: clamp(6rem, 12vw, 10rem);
     object-fit: cover; /* object-cover */
     flex-shrink: 0; /* flex-shrink-0 */
 }
@@ -220,7 +227,6 @@ header {
     white-space: nowrap; /* Evita que el precio se rompa en línea */
 }
 
-
 @media (max-width: 416px) {
     header {
         text-align: center;   
@@ -231,10 +237,9 @@ header {
         text-align: center; /* text-center */
         position: relative;
         width: 100%;
-        height: 100%;
-        
+        height: auto; /* evita forzar altura fija */
+        padding: 0 0.75rem;
     }
-
 
     .site-title {
         font-size: 7vw;
@@ -244,7 +249,6 @@ header {
         letter-spacing: 0.05em;
         margin-top: 20px;
         padding: 2px 10%;
-        
     }
 
     .site-tagline {
@@ -257,8 +261,9 @@ header {
     }
 
     .section-decorator-img {
-        width: 100%; /* Ajusta el ancho de la imagen */
-        height: 90%;
+        width: 100%;
+        height: auto;
+        max-height: 100%;
         display: block;
         z-index: 10;
         opacity: 1;
@@ -267,5 +272,133 @@ header {
     }
     .header-separator-svg {
         margin-top: 25px;
+        width: 80%; /* reduce en móviles */
     }
+}
+
+/* Regla global para imágenes responsivas */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.is-open {
+    display: flex;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(2px);
+}
+
+.modal-dialog {
+    position: relative;
+    max-width: 900px;
+    width: calc(100% - 2rem);
+    max-height: calc(100dvh - 2rem);
+    background: var(--color-dark-bg);
+    border: 2px solid var(--color-amber-400);
+    border-radius: 14px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45), 0 0 0 6px rgba(251,191,36,0.08) inset;
+    color: var(--color-text-primary);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.96);
+    opacity: 0;
+    animation: modal-in 320ms cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+.modal.is-closing .modal-dialog {
+    animation: modal-out 220ms ease forwards;
+}
+
+@keyframes modal-in {
+    0% { opacity: 0; transform: translateY(10px) scale(0.96); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes modal-out {
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(10px) scale(0.96); }
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--color-amber-400);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.modal-content {
+    padding: 1rem 1rem 1.25rem;
+    overflow: auto;
+}
+
+.modal-header {
+    text-align: center;
+    padding: 0.25rem 0 0.75rem;
+}
+
+.modal-title {
+    font-size: 1.75rem;
+    color: var(--color-amber-300);
+    font-family: var(--font-family-greatvictorian-swashed);
+}
+
+.modal-body {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 1rem;
+}
+
+.modal-image {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+
+.modal-text {
+    text-align: left;
+}
+
+.modal-subtitle {
+    color: var(--color-amber-200);
+    font-size: 1.1rem;
+    margin: 0.5rem 0 0.5rem;
+}
+
+.modal-ingredients,
+.modal-steps {
+    margin-left: 1rem;
+}
+
+.modal-ingredients li,
+.modal-steps li {
+    margin: 0.25rem 0;
+    color: var(--color-gray-300);
+}
+
+@media (max-width: 720px) {
+    .modal-body { grid-template-columns: 1fr; }
+    .modal-image { height: 200px; }
 }
