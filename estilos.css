@@ -120,7 +120,7 @@ header {
     width: 50%; /* w-1/2 */
     max-width: 20rem; /* Para que no crezca demasiado en pantallas muy grandes */
     height: auto;
-    margin-top: 1.5rem; /* mt-6 (24px) */
+    margin-top: 8rem; /* mt-6 (24px) */
     margin-left: auto; /* mx-auto */
     margin-right: auto; /* mx-auto */
     color: var(--color-amber-400); /* text-amber-400 - para SVG que usan currentColor */
@@ -252,7 +252,7 @@ header {
     }
 
     .site-tagline {
-        margin-top: 8px;
+        margin-top: -3px;
         font-size: 4vw;
         color: var(--color-gray-300);
         font-style: italic;
@@ -337,9 +337,9 @@ img {
 
 .modal-close {
     position: absolute;
-    top: 10px;
-    right: 12px;
-    font-size: 28px;
+    top: 20px;
+    right: 20px;
+    font-size: 32px;
     line-height: 1;
     color: var(--color-amber-400);
     background: transparent;
